@@ -102,7 +102,7 @@ Planned next steps:
 
 - **Hyperparameter study:** vary retrieval parameters (e.g. `k`) and compare runs on the same seed.
 - **LLM-as-judge:** score generated answers with a local LLM instead of string comparison, better suited to rephrased or verbose answers.
-- **Judge validation:** check the judge against manual labels on a small sample before trusting its scores, since a judge evaluated with strings alone is just another lossy metric.
+- **Judge validation:** check the judge against manual labels on a small sample before trusting its scores.
 
 ## Status
 
@@ -110,19 +110,13 @@ Planned next steps:
 - [x] Indexing with Chroma and Ollama embeddings
 - [x] Simple RAG pipeline (LangChain building blocks)
 - [x] Evaluation script: retrieval (proxy labels), generation (string-based) and operational metrics
-- [ ] Baseline run with the current metrics (to be re-run: the previous results used older metrics)
+- [ ] Baseline run with the current metrics
 - [ ] Hyperparameter study
 - [ ] LLM-as-judge and manual validation of the judge
-- [ ] Analysis notebook
-- [ ] Written-up results
 
 ## Results
 
 To be filled in once each experiment has been run and reviewed.
-
-| System | Yes/no acc. | Open F1 | Precision@K | MRR | Recall@K | Latency (median / p95) |
-|---|---|---|---|---|---|---|
-| Baseline | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ## Limitations
 
@@ -130,10 +124,6 @@ To be filled in once each experiment has been run and reviewed.
 - Retrieval quality is estimated through a proxy, not measured against labelled passages.
 - String-based metrics measure surface similarity, not meaning: a correct but rephrased answer can be scored low.
 - Small evaluation samples give noisy numbers; avoid reading much into small differences.
-
-## Future directions
-
-An agentic version of this pipeline (LangGraph: query rewriting, relevance grading, retry loop) and the evaluation of an agent will be explored in a separate project, with its own dataset. This repository stays focused on single-shot RAG and its evaluation.
 
 ## Tech stack
 

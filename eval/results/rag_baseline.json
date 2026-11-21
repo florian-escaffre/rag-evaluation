@@ -1,0 +1,1072 @@
+{
+  "config": {
+    "name": "rag_baseline",
+    "llm": "ministral-3:3b",
+    "embedding": "nomic-embed-text",
+    "k": 4,
+    "n": 50,
+    "seed": 42
+  },
+  "summary": {
+    "n_total": 50,
+    "n_yes_no": 21,
+    "n_open": 29,
+    "open_precision_at_k": {
+      "mean": 0.20689655172413793,
+      "n": 29
+    },
+    "open_mrr": {
+      "mean": 0.5689655172413793,
+      "n": 29
+    },
+    "open_recall_at_k": {
+      "mean": 0.4590725190104072,
+      "n": 21
+    },
+    "yes_no_accuracy": {
+      "mean": 0.7619047619047619,
+      "n": 21
+    },
+    "yes_no_unparsed_rate": {
+      "mean": 0.0,
+      "n": 21
+    },
+    "yes_no_majority_baseline": 0.8095238095238095,
+    "open_exact_match": {
+      "mean": 0.3103448275862069,
+      "n": 29
+    },
+    "open_f1": {
+      "mean": 0.468333964885689,
+      "n": 29
+    },
+    "latency_s": {
+      "median": 0.5135000000000001,
+      "p95": 1.0697999999999994
+    },
+    "retrieval_s": {
+      "median": 0.031,
+      "p95": 0.05919999999999999
+    },
+    "generation_s": {
+      "median": 0.448,
+      "p95": 1.0009499999999996
+    }
+  },
+  "rows": [
+    {
+      "question": "Who graduated in ecclesiastical law at the early age of 20 and began to practice?",
+      "ground_truth": "Amedeo Avogadro",
+      "prediction": "Woodrow Wilson.",
+      "latency_s": 0.251,
+      "retrieval_s": 0.034,
+      "generation_s": 0.185,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "He graduated in ecclesiastical law at  the early age of 20 and began to practice.",
+        "He graduated Phi Beta Kappa and magna cum laude (22nd of 177) from Harvard in 1880, and entered Columbia Law School.  When offered a chance to run for New York Assemblyman in 1881, he dropped out of law school to pursue his new goal of entering public life. Brands, pp 123\u00e2\u0080\u009329",
+        "In January 1882, Wilson decided to start his first law practice in Atlanta. One of Wilson\u00e2\u0080\u0099s University of Virginia classmates, Edward Ireland Renick, invited Wilson to join his new law practice as partner.  Wilson joined him there in May 1882.  He passed the Georgia Bar. On October 19,1882 he appeared in court before Judge George Hillyer to take his examination for the bar, which he passed with flying colors and he began work on his thesis Congressional Government in the United States.  Competition was fierce in the city with 143 other lawyers, so with few cases to keep him occupied, Wilson quickly grew disillusioned. Moreover, Wilson had studied law in order to eventually enter politics, but he discovered that he could not continue his study of government and simultaneously continue the reading of law necessary to stay proficient. In April 1883, Wilson applied to the new Johns Hopkins University to study for a Ph.D. in history and political science, which he completed in 1886.     He is the only president to date to have earned a Ph.D. In July 1883, Wilson left his law practice to begin his academic studies.   Mulder, John H. Woodrow Wilson: The Years of Preparation. (Princeton, 1978) 71-72.  .",
+        "Ford hoped to attend Yale's law school beginning in 1935 while serving as boxing coach and assistant varsity football coach, but Yale officials initially denied his admission to the law school, because of his full-time coaching responsibilities.  He spent the summer of 1937 as a student at the University of Michigan Law School     and was eventually admitted in the spring of 1938 to Yale Law School.     Ford earned his LL.B. degree in 1941 (later amended to Juris Doctor), graduating in the top 25 percent of his class. His introduction to politics came in the summer of 1940 when he worked in Wendell Willkie's presidential campaign."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 3,
+      "recall_at_k": 0.0
+    },
+    {
+      "question": "Is the smallest penguin species the Little Blue Penguin -LRB- also known as the Fairy Penguin -RRB- , which stands around 40 cm tall -LRB- 16 in -RRB- and weighs 1 kg -LRB- 2.2 lb -RRB- ?",
+      "ground_truth": "Yes",
+      "prediction": "Yes.",
+      "latency_s": 0.745,
+      "retrieval_s": 0.175,
+      "generation_s": 0.539,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Was Wilson president of the American Political Science Association in 1910 ?",
+      "ground_truth": "Yes",
+      "prediction": "Yes.",
+      "latency_s": 0.386,
+      "retrieval_s": 0.031,
+      "generation_s": 0.312,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Does Qatar rank as the eighth richest country in the world per capita?",
+      "ground_truth": "No.",
+      "prediction": "No.",
+      "latency_s": 0.37,
+      "retrieval_s": 0.033,
+      "generation_s": 0.296,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "no"
+    },
+    {
+      "question": "Is aquatic respiration in Australian freshwater turtles being studied?",
+      "ground_truth": "yes",
+      "prediction": "Yes.",
+      "latency_s": 0.403,
+      "retrieval_s": 0.035,
+      "generation_s": 0.327,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "How many counties is Romania divided into?",
+      "ground_truth": "41.",
+      "prediction": "41",
+      "latency_s": 0.394,
+      "retrieval_s": 0.029,
+      "generation_s": 0.324,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "Alongside the county structure, Romania is also divided into four NUTS-1 level divisions (Romanian:Macroregiunea) and eight development regions corresponding to NUTS-2 divisions in the European Union.    These divisions have no administrative capacity and are instead used for co-ordinating regional development projects and statistical purposes. The NUTS-3 level divisions reflect Romania's administrative-territorial structure, and correspond to the 41 counties and the Bucharest municipality.",
+        "Romania is divided into forty-one counties (jude\u00c5\u00a3e), as well as the municipality of Bucharest (Bucure\u00c5\u009fti) - which is its own administrative unit. Each county is administered by a county council (consiliu jude\u00c5\u00a3ean), responsible for local affairs, as well as a prefect, who is appointed by the central government but cannot be a member of any political party.",
+        "With a surface area of 238,391 km\u00c2\u00b2, Romania is the largest country in southeastern Europe and the twelfth-largest in Europe. A large part of Romania's border with Serbia and Bulgaria is formed by the Danube. The Danube is joined by the Prut River, which forms the border with the Republic of Moldova. The Danube flows into the Black Sea within Romania's territory forming the Danube Delta, the second largest delta in Europe,  and a biosphere reserve and a biodiversity World Heritage Site. Other important rivers are the Siret, running north-south through Moldavia, the Olt, running from the oriental Carpathian Mountains to Oltenia, and the Mure\u00c5\u009f, running through Transylvania from East to West.",
+        "Romania ( ,  ) is a country in Southeastern Europe. It shares a border with Hungary and Serbia to the west, Ukraine and the Republic of Moldova to the northeast, and Bulgaria to the south. Romania has a stretch of sea coast along the Black Sea. It is located roughly in the lower basin of the Danube and almost all of the Danube Delta is located within its territory."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 9,
+      "recall_at_k": 0.1111111111111111
+    },
+    {
+      "question": "To what genus does the gray wolf belong?",
+      "ground_truth": "Canis",
+      "prediction": "Canis",
+      "latency_s": 0.363,
+      "retrieval_s": 0.027,
+      "generation_s": 0.295,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "The gray wolf is a member of the genus Canis, which comprises between 7 and 10 species. It is one of six species termed 'wolf', the others being the Red Wolf (Canis rufus), the Indian Wolf (Canis indica), the Himalayan wolf (Canis himalayaensis), the Eastern Canadian Wolf (Canis lycaon) and the Ethiopian Wolf (Canis simensis).",
+        "The gray wolf (Canis lupus), also known as the timber wolf or, simply, wolf, is a mammal of the order Carnivora. The gray wolf is the largest member of the family Canidae and also the most well known of wolves. Its shoulder height ranges from 0.6 to 0.9 meters (26\u00e2\u0080\u009336 inches) and its weight typically varies between 32 and 62 kilograms (70\u00e2\u0080\u0093135 pounds). As evidenced by studies of DNA sequencing and genetic drift the gray wolf shares a common ancestry with the domestic dog (Canis lupus familiaris).",
+        "With respect to common names, spelling differences result in the alternative spelling grey wolf. As the first-named and most widespread of species termed \"wolf\", gray wolves are often simply referred to as wolves. It was one of the many species originally described by Carolus Linnaeus in his eighteenth-century work, Systema Naturae, and it still bears its original classification, Canis lupus.      The binomial name is derived from the Latin Canis, meaning \"dog\", and lupus, \"wolf\".",
+        "Historically, gray wolf classification has been transient in nature. As a result, there still exists some disagreement as to the status of certain possible subspecies. These are listed below."
+      ],
+      "hits": [
+        true,
+        true,
+        true,
+        false
+      ],
+      "precision_at_k": 0.75,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 5,
+      "recall_at_k": 0.6
+    },
+    {
+      "question": "Did Grand Rapids supporters not urge him to take on Bartel J. Jonkman , the incumbent Republican congressman ?",
+      "ground_truth": "No.",
+      "prediction": "No.",
+      "latency_s": 0.66,
+      "retrieval_s": 0.038,
+      "generation_s": 0.579,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "no"
+    },
+    {
+      "question": "What happened with a bromide emulsion in two sheets of very thick black paper?",
+      "ground_truth": "the plate does not become clouded upon being exposed to the sun for a day",
+      "prediction": "The bromide emulsion was wrapped between two sheets of very thick black paper to prevent the photographic plate from becoming clouded during exposure to sunlight.",
+      "latency_s": 1.158,
+      "retrieval_s": 0.033,
+      "generation_s": 1.086,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.1714285714285714,
+      "contexts": [
+        "One wraps a Lumi\u00c3\u00a8re photographic plate with a bromide emulsion in two sheets of very thick black paper, such that the plate does not become clouded upon being exposed to the sun for a day. One places on the sheet of paper, on the outside, a slab of the phosphorescent substance, and one exposes the whole to the sun for several hours. When one then develops the photographic plate, one recognizes that the silhouette of the phosphorescent substance appears in black on the negative. If one places between the phosphorescent substance and the paper a piece of money or a metal screen pierced with a cut-out design, one sees the image of these objects appear on the negative. \u00e2\u0080\u00a6 One must conclude from these experiments that the phosphorescent substance in question emits rays which pass through the  opaque paper and reduces silver salts.    Comptes Rendus 122, 420 (1896),  translated by Carmen Giunta. Accessed September 10, 2006.",
+        "In 1896, while investigating phosphorescence in uranium salts, Becquerel accidentally discovered radioactivity. Investigating the work of Wilhelm Conrad R\u00c3\u00b6ntgen, Becquerel wrapped a fluorescent substance, potassium uranyl sulfate, in photographic plates and black material in preparation for an experiment requiring bright sunlight. However, prior to actually performing the experiment, Becquerel found that the photographic plates were fully exposed. This discovery led Becquerel to investigate the spontaneous emission of nuclear radiation.",
+        "In a paper about panthers and ounces of Asia, Reginald Innes Pocock used a photo of a leopard skin from southern India; it had large black-rimmed blotches, each containing a number of dots and it resembled the pattern of a jaguar or clouded leopard. Another of Pocock's leopard skins from southern India had the normal rosettes broken up and fused and so much additional pigment that the animal looked like a black leopard streaked and speckled with yellow.",
+        "One document states that \"[he] is reported to have some 80 trunks in different places containing transcripts and plans having to do with his experiments [...]\". Charlotte Muzar reported that there were several \"missing\" papers and property."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "How much increase in the media's contribution to GDP is the government seeking?",
+      "ground_truth": "The government seeks to increase its GDP contribution to 3% by 2012. ",
+      "prediction": "3% (by 2012).",
+      "latency_s": 0.796,
+      "retrieval_s": 0.035,
+      "generation_s": 0.719,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.42857142857142855,
+      "contexts": [
+        "The media of Singapore play an important role in Singapore, one of the key strategic media centres in the Asia-Pacific region.    This is in line with the government's aggressive push to establish Singapore as a media hub in the world under the Media 21 plan launched in 2002.    Comprising of the publishing, print, broadcasting, film, music, digital and IT media sectors, the media industry collectively employed about 38,000 people and contributed 1.56% to Singapore's gross domestic product (GDP) in 2001 with an annual turnover of S$10 billion. The industry grew at an average rate of 7.7% annually from 1990 to 2000, and the government seeks to increase its GDP contribution to 3% by 2012.",
+        "In 2001, a global recession and slump in the technology sector caused the GDP to contract by 2.2 percent. The Economic Review Committee (ERC), set up in December 2001, recommended several policy changes with a view to revitalising the economy. Singapore has since recovered from the recession, largely due to improvements in the world economy; the Singaporean economy itself grew by 8.3 percent in 2004, 6.4 percent in 2005    and 7.9 percent in 2006.    In the first half of Year 2007, the economy grew by 7.6 percent. The growth forecast for the whole year is expected to be between 7 percent to 8 percent, up from the original estimation of 5 percent to 7 percent.     On August 19 2007, Prime Minister Lee Hsien Loong announced in his National Day Rally Speech that Singapore's economy is expected to grow by at least 4-6 percent annually over the next 5-10 years.",
+        "The domestic economy continues to revolve around subsistence agriculture, which accounts for 50% of GDP and employs 85% of the work force,  The World Factbook  mainly small landholders. Ghana made progress under a three-year structural adjustment programme in cooperation with the IMF.  On the negative side, public sector wage increases and regional peacekeeping commitments have led to continued inflationary deficit financing, depreciation of the Cedi, and rising public discontent with Ghana's austerity measures. Even so, Ghana remains one of the more economically sound countries in all of Africa.",
+        "The government has struggled to prepare the economy for the new millennium through economic reform and massive investments in communications and physical infrastructure. Egypt has been receiving  U.S. foreign aid (since 1979, an average of $2.2 billion per year) and is the third-largest recipient of such funds from the United States following the Iraq war. Its main revenues however come from tourism as well as traffic that goes through the Suez Canal."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "Is the comic strip Mallard Fillmore named after the president ?",
+      "ground_truth": "yes",
+      "prediction": "yes",
+      "latency_s": 0.332,
+      "retrieval_s": 0.039,
+      "generation_s": 0.254,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Name four related articles for the article on turtles.",
+      "ground_truth": "Triassic, Ernst Haeckel, Kunstformen der Natur, Animal",
+      "prediction": "1. **\"Extensive information on all known turtles, tortoises, and terrapins\"** (e.g., species guides, identification).\n2. **\"Pet turtle species guide including care instructions\"** (e.g., habitat, diet, health).\n3. **\"Encyclopedia of Turtles\" by Pritchard (1979)** (e.g., taxonomic details, historical references).\n4. **\"Gulf Coast Turtle & Tortoise Society\u2019s captive husbandry guide\"** (e.g., best practices for keeping turtles/tortoises).",
+      "latency_s": 3.342,
+      "retrieval_s": 0.027,
+      "generation_s": 3.278,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "*  Turtles of the World: Extensive information on all known turtles, tortoises and terrapins, including key and quiz.",
+        "*  - A website on all pet turtle species including a guide on caring for your turtles.",
+        "* Pritchard, Pether C H (1979). Encyclopedia of Turtles. T.F.H. Publications.",
+        "*  - Gulf Coast Turtle & Tortoise Society, A group dedicated to education & proper captive husbandry of turtles and tortoises."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "How much do sea otters weigh?",
+      "ground_truth": "30 kg (about 65 pounds)",
+      "prediction": "30 kg (about 65 pounds).",
+      "latency_s": 0.593,
+      "retrieval_s": 0.023,
+      "generation_s": 0.53,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "Sea otters eat shellfish and other invertebrates (especially clams, abalone, and sea urchins ), frequently using rocks as crude tools to smash open shells. They grow to 1 to 1.5 m (2.5 to 5 feet) in length and weigh 30 kg (about 65 pounds). Although once near extinction, they have begun to spread again, from remnant populations in California and Alaska.",
+        "Otters have long, slim bodies and relatively short limbs, with webbed paws. Most have sharp claws on their feet, and all but the sea otter have long muscular tails.",
+        "Sea otters (Enhydra lutris) live along the Pacific coast of North America.  Their historic range included shallow waters of the Bering Strait and Kamchatka, and as far south as Japan. Sea otters have some 200,000 hairs per square cm of skin, a rich fur for which humans hunted them almost to extinction. By the time the 1911 Fur Seal Treaty gave them protection, so few sea otters remained that the fur trade had become unprofitable.",
+        "Otters do not depend on their specialized fur alone for survival in the cold waters where many live: they also have very high metabolic rates. For example Eurasian otters must eat 15% of their body-weight a day, and sea otters, 20 to 25%, depending on the temperature. In water as warm as 10\u00c2\u00b0C an otter needs to catch 100 g of fish per hour to survive.  Most species hunt for 3 to 5 hours a day, and nursing mothers up to 8 hours a day."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "What traps a layer of air, and keeps them dry and warm under water?",
+      "ground_truth": "Long guard hair",
+      "prediction": "Their **soft underfur** (trapped between their outer layer of long guard hair).",
+      "latency_s": 0.817,
+      "retrieval_s": 0.031,
+      "generation_s": 0.751,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.4,
+      "contexts": [
+        "They have a very soft underfur which is protected by their outer layer of long guard hair. This traps a layer of air, and keeps them dry and warm under water.",
+        "Aquatic beetles use several techniques for retaining air beneath the water's surface. Beetles of the family Dytiscidae hold air between the abdomen and the elytra when diving. Hydrophilidae have hairs on their under surface that retain a layer of air against their bodies. Adult crawling water beetles use both their elytra and their hind coxae (the basal segment of the back legs) in air retention     while whirligig beetles simply carry an air bubble down with them whenever they dive.",
+        "Penguins have a thick layer of insulating feathers which are designed to keep them warm in water (heat loss in water is much greater than in air).  The Emperor penguin (the largest penguin) has the largest body mass of all penguins, which further reduces relative surface area and heat loss. They also are able to control blood flow to their extremities, reducing the amount of blood which gets cold, but still keeping the extremities from freezing.  In the extreme cold of the Antarctic winter, the females are at sea fishing for food leaving the males to brave the weather by themselves.  They often huddle together to keep warm and rotate positions to make sure that each penguin gets a turn in the center of the heat pack.",
+        "Penguins are superbly adapted to an aquatic life. Their wings have become flippers, useless for flight in the air. In the water, however, penguins are astonishingly agile. Within the smooth plumage a layer of air is preserved, ensuring buoyancy. The air layer also helps insulate the birds in cold waters."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "What field did Woodrow Wilson leave law practice to study?",
+      "ground_truth": "history and political science",
+      "prediction": "History and political science.",
+      "latency_s": 0.646,
+      "retrieval_s": 0.023,
+      "generation_s": 0.582,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "In January 1882, Wilson decided to start his first law practice in Atlanta. One of Wilson\u00e2\u0080\u0099s University of Virginia classmates, Edward Ireland Renick, invited Wilson to join his new law practice as partner.  Wilson joined him there in May 1882.  He passed the Georgia Bar. On October 19,1882 he appeared in court before Judge George Hillyer to take his examination for the bar, which he passed with flying colors and he began work on his thesis Congressional Government in the United States.  Competition was fierce in the city with 143 other lawyers, so with few cases to keep him occupied, Wilson quickly grew disillusioned. Moreover, Wilson had studied law in order to eventually enter politics, but he discovered that he could not continue his study of government and simultaneously continue the reading of law necessary to stay proficient. In April 1883, Wilson applied to the new Johns Hopkins University to study for a Ph.D. in history and political science, which he completed in 1886.     He is the only president to date to have earned a Ph.D. In July 1883, Wilson left his law practice to begin his academic studies.   Mulder, John H. Woodrow Wilson: The Years of Preparation. (Princeton, 1978) 71-72.  .",
+        "In 1879, Wilson attended law school at University of Virginia for one year but he never graduated. His frail health dictated withdrawal, and he went home to Wilmington, North Carolina where he continued his studies. Wilson was also a member of the Phi Kappa Psi fraternity. In 1885, he married Ellen Louise Axson, the daughter of a minister from Rome, Georgia.",
+        "Wilson served on the faculties of Bryn Mawr College and Wesleyan University (where he also coached the football team) and founded the Wesleyan University debate team (which to this date is named the T. Woodrow Wilson debate team) before joining the Princeton faculty as professor of jurisprudence and political economy in 1890. While there, he was one of the faculty members of the short-lived coordinate college, Evelyn College for Women.  Additionally, Wilson became the first lecturer of Constitutional Law at New York Law School where he taught with Charles Evans Hughes.",
+        "* Wilson remains the only American President to have earned a research doctoral degree."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "What religions has Egypt outlawed?",
+      "ground_truth": "All but Christianity, Islam, and Judaism",
+      "prediction": "I don\u2019t know.",
+      "latency_s": 0.617,
+      "retrieval_s": 0.021,
+      "generation_s": 0.553,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "The high court of Egypt has outlawed all religions and belief except Islam, Christianity and Judaism. (For more information see Egyptian Identification Card Controversy.)",
+        "Religion plays a central role in most Egyptians' lives. The rolling calls to prayer that are heard five times a day have the informal effect of regulating the pace of everything from business to entertainment. Cairo is famous for its numerous mosque minarets and church towers. This religious landscape has been marred by a record of religious extremism.    Most recently,  a December 16 2006 judgment of the Supreme Administrative Court of Egypt insisted on a clear demarcation between \"recognized religions\"\u00e2\u0080\u0094Islam, Christianity and Judaism\u00e2\u0080\u0094and all other religious beliefs\u00e2\u0080\u0094thus effectively delegitimatizing and forbidding practice of all but these aforementioned religions.     This judgment has led to the requirement for communities to either commit perjury or be subjected to denial of identification cards.",
+        "Bah\u00c3\u00a1'\u00c3\u00ads in Egypt, whose population is estimated to be a couple of thousands, have long been persecuted, having their institutions and community activities banned. Since their faith is not officially recognized by the state, they are also not allowed to use it on their national identity cards (conversely, Islam, Christianity, and Judaism are officially recognized); hence most of them do not hold national identity cards. In April 2006 a court case recognized the Bah\u00c3\u00a1'\u00c3\u00ad Faith, but the government appealed the court decision and succeeded in having it suspended on May 15, 2006.    On December 16, 2006, only after one hearing, the Supreme Administrative Council of Egypt ruled against the Bah\u00c3\u00a1'\u00c3\u00ads, stating that the government may not recognize the Bah\u00c3\u00a1'\u00c3\u00ad Faith in official identification documents.",
+        "Religious freedom in Egypt is hampered to varying degrees by extremist Islamist groups and by discriminatory and restrictive government policies. Being the largest religious minority in Egypt, Coptic Christians are the most negatively affected community. Copts have faced increasing marginalization after the 1952 coup d'\u00c3\u00a9tat led by Gamal Abdel Nasser. Until recently, Christians were required to obtain presidential approval for even minor repairs in churches. Although the law was eased in 2005 by handing down the authority of approval to the governors, Copts continue to face many obstacles in building new or repairing existing churches. These obstacles are not found in building mosques. WorldWide Religious News.  Church Building Regulations Eased. December 13, 2005.  Compass Direct News.  Church Building Regulations Eased. December 13, 2005."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "Were the Leopard men a West African secret society who practised cannibalism ?",
+      "ground_truth": "Yes",
+      "prediction": "Yes.",
+      "latency_s": 0.422,
+      "retrieval_s": 0.034,
+      "generation_s": 0.352,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "The Celsius crater on the Moon is what?",
+      "ground_truth": "named after him",
+      "prediction": "Named after **Anders Celsius**.",
+      "latency_s": 0.438,
+      "retrieval_s": 0.029,
+      "generation_s": 0.368,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.5714285714285715,
+      "contexts": [
+        "The Celsius crater on the Moon is named after him.",
+        "* \"Gazetteer of Planetary Nomenclature\",  Moon Nomenclature: Crater. USGS, Astrogeology Research Program.",
+        "The SI unit for radioactivity, the becquerel (Bq), is named after him, and there is a Becquerel crater on the Moon and a Becquerel crater on Mars.",
+        "*Newton, I. (1975). Isaac Newton's 'Theory of the Moon's Motion' (1702). London: Dawson."
+      ],
+      "hits": [
+        true,
+        false,
+        true,
+        false
+      ],
+      "precision_at_k": 0.5,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 14,
+      "recall_at_k": 0.14285714285714285
+    },
+    {
+      "question": "How do sea otters insulate themselves?",
+      "ground_truth": "a layer of air trapped in their fur(!)",
+      "prediction": "They rely on a layer of air trapped in their fur, topped up by blowing into it from their mouths.",
+      "latency_s": 0.962,
+      "retrieval_s": 0.023,
+      "generation_s": 0.897,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.5384615384615384,
+      "contexts": [
+        "Unlike most marine mammals such as (seals or whales), sea otters do not have a layer of insulating blubber. As with other species of otter, they rely on a layer of air trapped in their fur, which they keep topped up by blowing into the fur from their mouths.  They spend most of their time in the water, whereas other otters spend much of their time on land.",
+        "Otters are very active, chasing prey in the water or searching the beds of rivers, lakes or the sea.  Most species live beside water, entering it mainly to hunt or travel, otherwise spending much of their time on land to avoid their fur becoming waterlogged.  The sea otter lives actually in the sea.",
+        "Otters do not depend on their specialized fur alone for survival in the cold waters where many live: they also have very high metabolic rates. For example Eurasian otters must eat 15% of their body-weight a day, and sea otters, 20 to 25%, depending on the temperature. In water as warm as 10\u00c2\u00b0C an otter needs to catch 100 g of fish per hour to survive.  Most species hunt for 3 to 5 hours a day, and nursing mothers up to 8 hours a day.",
+        "Sea otters (Enhydra lutris) live along the Pacific coast of North America.  Their historic range included shallow waters of the Bering Strait and Kamchatka, and as far south as Japan. Sea otters have some 200,000 hairs per square cm of skin, a rich fur for which humans hunted them almost to extinction. By the time the 1911 Fur Seal Treaty gave them protection, so few sea otters remained that the fur trade had become unprofitable."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "What happens when mothers lose a chick?",
+      "ground_truth": "They sometimes attempt to \"steal\" another chick.",
+      "prediction": "They sometimes attempt to \"steal\" another mother's chick, usually unsuccessfully, with assistance from nearby females defending their own chick.",
+      "latency_s": 0.949,
+      "retrieval_s": 0.023,
+      "generation_s": 0.883,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.5384615384615384,
+      "contexts": [
+        "When mothers lose a chick, they sometimes attempt to \"steal\" another mother's chick, usually unsuccessfully as other females in the vicinity assist the defending mother in keeping her chick.  In some species, such as Emperor Penguins, young penguins assemble in large groups called cr\u00c3\u00a8ches .",
+        "Aptenodytes forsteri (a parent with a chick)",
+        "Aptenodytes forsteri (a parent with a chick and lonely chick behind)",
+        "A mother and cubs in Churchill, Manitoba"
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "Is Avogadro 's number commonly used to compute the results of chemical reactions ?",
+      "ground_truth": "yes",
+      "prediction": "yes",
+      "latency_s": 0.326,
+      "retrieval_s": 0.035,
+      "generation_s": 0.253,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Are penguins considered \"higher waterbirds\"?",
+      "ground_truth": "yes",
+      "prediction": "Yes.",
+      "latency_s": 0.338,
+      "retrieval_s": 0.027,
+      "generation_s": 0.27,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Have kangaroos fared well since European S08_settlement?",
+      "ground_truth": "yes",
+      "prediction": "**Yes**.",
+      "latency_s": 0.427,
+      "retrieval_s": 0.033,
+      "generation_s": 0.354,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Is Egypt the most populated country in Africa?",
+      "ground_truth": "no",
+      "prediction": "Yes.",
+      "latency_s": 0.545,
+      "retrieval_s": 0.031,
+      "generation_s": 0.472,
+      "is_yes_no": true,
+      "correct": false,
+      "parsed": "yes"
+    },
+    {
+      "question": "Did Roosevelt support racial integration in schools?",
+      "ground_truth": "yes",
+      "prediction": "Yes.",
+      "latency_s": 0.403,
+      "retrieval_s": 0.026,
+      "generation_s": 0.346,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Why did Coolidge not attend law school?",
+      "ground_truth": "It was too expensive",
+      "prediction": "Yes.",
+      "latency_s": 0.572,
+      "retrieval_s": 0.031,
+      "generation_s": 0.5,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "After graduating from Amherst, at his father's urging, Coolidge moved to Northampton, Massachusetts to take up the practice of law. Avoiding the costly alternative of attending a law school, Coolidge followed the more common practice at the time of apprenticing with a local firm, Hammond & Field. John C. Hammond and Henry P. Field, both Amherst graduates themselves, introduced Coolidge to the law practice in the county seat of Hampshire County. In 1897, Coolidge was admitted to the bar. With his savings and a small inheritance from his grandfather, Coolidge was able to open his own law office in Northampton in 1898, where he practiced transactional law, believing that he served his clients best by staying out of court. As his reputation as a hard-working and diligent attorney grew, local banks and other businesses began to retain his services. Fuess, 74\u00e2\u0080\u009381; McCoy 22\u00e2\u0080\u009326",
+        "Coolidge graduated from Black River Academy, Vermont, but failed his initial entrance exam to Amherst College.  Vermont Historical Society biography of Calvin Coolidge accessed December 6 2007  He spent one term at St. Johnsbury Academy, Vermont before entering Amherst.  Accomplished alumni. Amherst College, where he was a member of the Fraternity of Phi Gamma Delta. Retrieved on May 18, 2007  He dropped John from his name upon graduating from college. At Amherst, Coolidge became a member of the Fraternity of Phi Gamma Delta and joined the College Republicans in 1892. White, 35  While there, Coolidge met Dwight Morrow, who would become a life-long friend. Sobel, 36  Coolidge would later credit Charles E. Garman, a professor of philosophy and ethics, with having a significant influence on his education. Autobiography, 63\u00e2\u0080\u009370  He graduated cum laude in 1895. Sobel, 41  At graduation, Coolidge was selected by his classmates to compose and read the Grove Oration, a humorous speech traditionally given during the graduation ceremony.",
+        "Coolidge as an Amherst undergraduate",
+        "Coolidge's duties as lieutenant governor were few; in Massachusetts, the lieutenant governor does not preside over the state Senate, although Coolidge did become an ex officio member of the governor's cabinet. Fuess, 150; Sobel, 104  As a full-time elected official, Coolidge no longer practiced law after 1916, though his family continued to live in Northampton. Fuess, 151\u00e2\u0080\u0093152  McCall and Coolidge were both reelected in 1916 and again in 1917 (both offices were one-year terms in those days). When McCall decided that he would not stand for a fourth term, Coolidge announced his own intention to run for governor. Sobel, 107\u00e2\u0080\u0093110"
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "If a turtle egg was kept warm, what would likely hatch?",
+      "ground_truth": "A female turtle.",
+      "prediction": "Female.",
+      "latency_s": 0.439,
+      "retrieval_s": 0.04,
+      "generation_s": 0.356,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.6666666666666666,
+      "contexts": [
+        "Turtles lay eggs, like other reptiles, which are slightly soft and leathery. The eggs of the largest species are spherical, while the eggs of the rest are elongated. Their albumen is white and contains a different protein than bird eggs, such that it will not coagulate when cooked. Turtle eggs prepared to eat consist mainly of yolk. In some species, temperature determines whether an egg develops into a male or a female: a higher temperature causes a female, a lower temperature causes a male. Large numbers of eggs are deposited in holes dug into mud or sand. They are then covered and left to incubate by themselves.  When the turtles hatch they squirm their way to the surface and make for the water. There are no known species wherein the mother cares for the young.",
+        "Like other reptiles, turtles are ectothermic (or \"cold-blooded\" Reptile blood isn't necessarily cold, as reptiles sun themselves and take other measures to stay warm. ). Like other amniotes (reptiles, dinosaurs, birds, and mammals), they breathe air and don't lay eggs underwater, though many species live in or around water. The largest turtles are aquatic.",
+        "An American map turtle hatchling.",
+        "Sea turtles lay their eggs on dry sandy beaches. Immature sea turtles are not cared for by the adults. Most are endangered largely as a result of beach development and over hunting."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "Is it a constitutional democracy , where the president fulfills the roles of both head of state and head of government?",
+      "ground_truth": "Yes",
+      "prediction": "No.",
+      "latency_s": 0.681,
+      "retrieval_s": 0.063,
+      "generation_s": 0.577,
+      "is_yes_no": true,
+      "correct": false,
+      "parsed": "no"
+    },
+    {
+      "question": "What sort of cats are solitary?",
+      "ground_truth": "Leopards",
+      "prediction": "Yes.",
+      "latency_s": 0.537,
+      "retrieval_s": 0.026,
+      "generation_s": 0.475,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "Graceful and stealthy, leopards are famous for their ability to go undetected. They are good, agile climbers, but cannot get down from a tree headfirst, because they do not have the ankle flexibility\u00e2\u0080\u0094the only two cats that do are the Margay and the Clouded Leopard. Female leopard. Note the white spots on the back of the ears used for communication with cubs when hunting in long grassAlong with climbing, they are strong swimmers but not as fond of water as tigers; for example, leopards will not normally lie in water. They are mainly nocturnal but can be seen at any time of day and will even hunt during daytime on overcast days. In regions where they are hunted, nocturnal behaviour is more common. These cats are solitary, avoiding one another. However, three or four are sometimes seen together. Hearing and eyesight are the strongest of these cats' senses and are extremely acute. Olfaction is relied upon as well, but not for hunting. When making a threat, leopards stretch their backs, depress their ribcages between their shoulder blades so they stick out, and lower their heads (similar to domestic cats). During the day they may lie in bush, on rocks, or in a tree with their tails hanging below the treetops and giving them away.",
+        "Once distributed across southern Eurasia and Africa, from Korea to South Africa and Spain, it has disappeared from much of its former range and now chiefly occurs in subsaharan Africa. There are fragmented populations in Israel, the Indian subcontinent, Indochina, Malaysia, and western China. Despite the loss of range and continued population declines, the cat remains a least concern species;  its numbers are greater than that of the other Panthera species, all of which face more acute conservation concerns.",
+        "The species' success owes in part to its opportunistic hunting behaviour and its adaptability to a variety of habitats. The leopard consumes virtually any animal it can catch and ranges from rainforest to desert. Its ecological role resembles that of the similarly-sized cougar in the Americas. Physically, the spotted cat most closely resembles the jaguar, although it is of lighter build.",
+        "As of 1996, the leopard had the largest distribution of any wild cat,  although populations before and since have shown a declining trend and are fragmented outside of subsaharan Africa. The IUCN notes that within subsaharan Africa the species is \"still numerous and even thriving in marginal habitats\" where other large cats have disappeared, but that populations in North Africa may be extinct. In Asia, data on distribution are mixed: populations in Southwest and Central Asia are small and fragmented; in the northeast portion of the range, they are critically endangered; and in Indian, Southeast Asia, and China, the cat is still relatively abundant.  Leopards also like to live in grasslands, woodlands and riverside forests."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        true
+      ],
+      "precision_at_k": 0.5,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 26,
+      "recall_at_k": 0.07692307692307693
+    },
+    {
+      "question": "Was Coolidge opposed in the Republican nomination for Governor of MassachuS08_setts in 1918?",
+      "ground_truth": "Yes",
+      "prediction": "No.",
+      "latency_s": 0.736,
+      "retrieval_s": 0.057,
+      "generation_s": 0.639,
+      "is_yes_no": true,
+      "correct": false,
+      "parsed": "no"
+    },
+    {
+      "question": "Is Qatar bordered by Saudi Arabia to the south?",
+      "ground_truth": "Yes",
+      "prediction": "yes",
+      "latency_s": 0.441,
+      "retrieval_s": 0.027,
+      "generation_s": 0.374,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Are penguins birds?",
+      "ground_truth": "yes",
+      "prediction": "yes",
+      "latency_s": 0.51,
+      "retrieval_s": 0.024,
+      "generation_s": 0.444,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "What are deposited in holes dug into mud or sand?",
+      "ground_truth": "eggs",
+      "prediction": "Water.",
+      "latency_s": 0.432,
+      "retrieval_s": 0.035,
+      "generation_s": 0.356,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "Apart from the Nile Valley, the majority of Egypt's landscape is a sandy desert. The winds blowing can create sand dunes over   high. Egypt includes parts of the Sahara Desert and of the Libyan Desert. These deserts were referred to as the \"red land\" in ancient Egypt, and they protected the Kingdom of the Pharaohs from western threats.",
+        "Parental care varies between species, ranging from the simple laying of eggs under a leaf to certain scarab beetles, which construct underground structures complete with a supply of dung to house and feed their young. Other beetles are leaf rollers, biting sections of leaves to cause them to curl inwards, then laying their eggs, thus protected, inside.",
+        "*During the dry season elephants use their tusks to dig into dry river beds to reach underground sources of water. These newly dug water holes may become the only source of water in the area.",
+        "Several species of dung beetle, most notably Scarabaeus sacer (often referred to as \"scarab\"), enjoyed a sacred status among the ancient Egyptians, as the creatures were likened to the major god Khepri. Some scholars suggest that the Egyptians' practice of making mummies was inspired by the brooding process of the beetle. Many thousands of amulets and stamp seals have been excavated that depict the scarab. In many artifacts, the scarab is depicted pushing the sun along its course in the sky, much as scarabs push or roll balls of dung to their brood sites. During and following the New Kingdom, scarab amulets were often placed over the heart of the mummified deceased."
+      ],
+      "hits": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 0.5,
+      "n_relevant_in_corpus": 11,
+      "recall_at_k": 0.09090909090909091
+    },
+    {
+      "question": "Was the leopard tank a German designed tank which entered service in 1965 ?",
+      "ground_truth": "Yes",
+      "prediction": "yes",
+      "latency_s": 0.371,
+      "retrieval_s": 0.041,
+      "generation_s": 0.288,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "Are there a large number of Jews living in Egypt today?",
+      "ground_truth": "no",
+      "prediction": "No.",
+      "latency_s": 0.628,
+      "retrieval_s": 0.031,
+      "generation_s": 0.56,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "no"
+    },
+    {
+      "question": "Why are sea otters nearly extinct?",
+      "ground_truth": "They've been hunted for their fur",
+      "prediction": "The primary reason sea otters were nearly extinct was **overhunting for their fur**, which drove their population to critically low levels before protection was established.",
+      "latency_s": 1.322,
+      "retrieval_s": 0.025,
+      "generation_s": 1.253,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.2,
+      "contexts": [
+        "Sea otters (Enhydra lutris) live along the Pacific coast of North America.  Their historic range included shallow waters of the Bering Strait and Kamchatka, and as far south as Japan. Sea otters have some 200,000 hairs per square cm of skin, a rich fur for which humans hunted them almost to extinction. By the time the 1911 Fur Seal Treaty gave them protection, so few sea otters remained that the fur trade had become unprofitable.",
+        "Sea otters eat shellfish and other invertebrates (especially clams, abalone, and sea urchins ), frequently using rocks as crude tools to smash open shells. They grow to 1 to 1.5 m (2.5 to 5 feet) in length and weigh 30 kg (about 65 pounds). Although once near extinction, they have begun to spread again, from remnant populations in California and Alaska.",
+        "This species (Lutra lutra) inhabits Europe, and its range also extends across most of Asia and parts of North Africa. In the British Isles they occurred commonly as recently as the 1950s, but became rare in many areas due to the use of chlorinated hydrocarbon pesticides and as a result of habitat-loss and water pollution (they remained relatively common in parts of Scotland and Ireland). Population levels attained a low point in the 1980s, but are now recovering strongly, and by 1999 estimated numbers indicated a recovery to under 1000 animals  . The UK Biodiversity Action Plan envisages the re-establishment of otters by 2010 in all the UK rivers and coastal areas that they inhabited in 1960. Roadkill deaths have become one of the significant threats to the success of their re-establishment.",
+        "Otters are very active, chasing prey in the water or searching the beds of rivers, lakes or the sea.  Most species live beside water, entering it mainly to hunt or travel, otherwise spending much of their time on land to avoid their fur becoming waterlogged.  The sea otter lives actually in the sea."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "Is Liechtenstein the smallest German-speaking country in the world?",
+      "ground_truth": "Yes",
+      "prediction": "No.",
+      "latency_s": 0.364,
+      "retrieval_s": 0.039,
+      "generation_s": 0.283,
+      "is_yes_no": true,
+      "correct": false,
+      "parsed": "no"
+    },
+    {
+      "question": "What was Adams' political party?",
+      "ground_truth": "The Federalist Party.",
+      "prediction": "I don't know.",
+      "latency_s": 0.407,
+      "retrieval_s": 0.033,
+      "generation_s": 0.332,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "As was customary, Adams stayed in his home town of Quincy rather than actively campaign for the Presidency.  He wanted to stay out of what he called the silly and wicked game. His party, however, campaigned for him, while the Republicans campaigned for Jefferson.",
+        "Adams was not a popular leader like his second cousin, Samuel Adams; instead, his influence emerged through his work as a constitutional lawyer and his intense analysis of historical examples, Ferling (1992) p 117  together with his thorough knowledge of the law and his dedication to the principles of republicanism. Adams often found his inborn contentiousness to be a restraint in his political career.",
+        "* Thompson, C. Bradley. John Adams and the Spirit of Liberty. (1998). Analysis of Adams's political thought; insists Adams was the greatest political thinker among the Founding Generation and anticipated many of the ideas in The Federalist.",
+        "* Carey, George W., ed. The Political Writings of John Adams. (2001). Compilation of extracts from Adams's major political writings."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 5,
+      "recall_at_k": 0.0
+    },
+    {
+      "question": "Is Matti Vanhanen the Prime Minister of Finland?",
+      "ground_truth": "yes",
+      "prediction": "Yes.",
+      "latency_s": 0.391,
+      "retrieval_s": 0.051,
+      "generation_s": 0.298,
+      "is_yes_no": true,
+      "correct": true,
+      "parsed": "yes"
+    },
+    {
+      "question": "What was one of the many species described in Linnaeus's 18th-century work, Systema Naturae?",
+      "ground_truth": "Felis pardus",
+      "prediction": "Felis pardus",
+      "latency_s": 0.387,
+      "retrieval_s": 0.049,
+      "generation_s": 0.297,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "Felis pardus was one of the many species described in Linnaeus's 18th-century work, Systema Naturae.",
+        "The following are short descriptions of a selection of species (see below for full list)",
+        "This sub-species (Lutrogale perspicillata maxwelli) of the smooth-coated otter was the subject of the book Ring of Bright Water by the British naturalist Gavin Maxwell, and is named after him.  It is native to the Tigris-Euphrates alluvial salt marsh of Iraq, but it has been suggested that it may have become extinct as a result of the large-scale drainage that has taken place in the region since the 1960s .",
+        "Updated after Marples (1962), Acosta Hospitaleche (2004), and Ksepka et al. (2006). See the gallery for images of most living species."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "What do all turtles and tortoises breathe?",
+      "ground_truth": "air",
+      "prediction": "Air.",
+      "latency_s": 0.362,
+      "retrieval_s": 0.032,
+      "generation_s": 0.298,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "Even though many turtles spend large amounts of their lives underwater, all turtles and tortoises breathe air, and must surface at regular intervals to refill their lungs. They can also spend much of their lives on dry land. Aquatic respiration in Australian freshwater turtles is currently being studied. Some species have large cloacal cavities that are lined with many finger-like projections. These projections, called \"papillae\", have a rich blood supply, and serve to increase the surface area of the cloaca. The turtles can take up dissolved oxygen from the water using these papillae, in much the same way that fish use gills to respire.",
+        "Like other reptiles, turtles are ectothermic (or \"cold-blooded\" Reptile blood isn't necessarily cold, as reptiles sun themselves and take other measures to stay warm. ). Like other amniotes (reptiles, dinosaurs, birds, and mammals), they breathe air and don't lay eggs underwater, though many species live in or around water. The largest turtles are aquatic.",
+        "Turtles are reptilians of the Order Testudines (all living turtles belong to the crown group Chelonia), most of whose body is shielded by a special bony or cartilaginous shell developed from their ribs. The Order Testudines includes both extant (living) and extinct species, the earliest known turtles being from around 215 million years ago,  /ref> making turtles one of the oldest reptile groups, and a much more ancient group than lizards and snakes.  About 300 species are alive today; some are highly endangered.",
+        "*  - A website on all pet turtle species including a guide on caring for your turtles."
+      ],
+      "hits": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "precision_at_k": 0.5,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 37,
+      "recall_at_k": 0.05405405405405406
+    },
+    {
+      "question": "Who was the general in charge at the Battle of Antietam?",
+      "ground_truth": "General McClellan",
+      "prediction": "Lincoln.",
+      "latency_s": 0.627,
+      "retrieval_s": 0.036,
+      "generation_s": 0.548,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "Panicked by Lee's invasion of Maryland, Lincoln restored McClellan to command of all forces around Washington in time for the Battle of Antietam (September 1862). The ensuing Union victory enabled Lincoln to release his Emancipation Proclamation, but he relieved McClellan of his command shortly after the 1862 midterm elections and appointed Republican Ambrose Burnside to head the Army of the Potomac. Burnside had promised to follow through on Lincoln's strategic vision for a strong offensive against Lee and Richmond. After Burnside was stunningly defeated at Fredericksburg, Joseph Hooker was given the command, despite his idle talk about the necessity for a military dictator to win the war and a past history of criticizing his commanders.  Joseph Hooker biography  Hooker was routed by Lee at the Battle of Chancellorsville (May 1863), and relieved of command early in the subsequent Gettysburg Campaign replaced by George Meade.",
+        "In March 1864, Grant put Major General William T. Sherman in immediate command of all forces in the West and moved his headquarters to Virginia where he turned his attention to the long-frustrated Union effort to destroy the Army of Northern Virginia; his secondary objective was to capture the Confederate capital of Richmond, Virginia, but Grant knew that the latter would happen automatically once the former was accomplished. He devised a coordinated strategy that would strike at the heart of the Confederacy from multiple directions: Grant, George G. Meade, and Benjamin Franklin Butler against Lee near Richmond; Franz Sigel in the Shenandoah Valley; Sherman to invade Georgia, defeat Joseph E. Johnston, and capture Atlanta; George Crook and William W. Averell to operate against railroad supply lines in West Virginia; and Nathaniel Banks to capture Mobile, Alabama. Grant was the first general to attempt such a coordinated strategy in the war and the first to understand the concepts of total war, in which the destruction of an enemy's economic infrastructure that supplied its armies was as important as tactical victories on the battlefield.",
+        "Grant first reached national prominence by taking Forts Henry and Donelson in 1862 in the first Union victories of the war.  The following year, his brilliant campaign ending in the surrender of Vicksburg secured Union control of the Mississippi and\u00e2\u0080\u0094with the simultaneous Union victory at Gettysburg\u00e2\u0080\u0094turned the tide of the war in the North's favor. Named commanding general of the Federal armies in 1864, he implemented a coordinated strategy of simultaneous attacks aimed at destroying the South's ability to carry on the war.  In 1865, after conducting a costly war of attrition in the East, he accepted the surrender of his Confederate opponent Robert E. Lee at Appomattox Court House. Grant has been described by  J.F.C. Fuller as \"the greatest general of his age and one of the greatest strategists of any age.\" His Vicksburg Campaign in particular has been scrutinized by military specialists around the world.",
+        "Ulysses S. Grant, See military career for a discussion of Grant's middle initial.  born Hiram Ulysses Grant (April 27, 1822   July 23, 1885), was an American general and the eighteenth President of the United States (1869 1877). He achieved international fame as the leading Union general in the American Civil War."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 0.0
+    },
+    {
+      "question": "What is the official language of Romania?",
+      "ground_truth": "Romanian.",
+      "prediction": "Romanian.",
+      "latency_s": 0.689,
+      "retrieval_s": 0.031,
+      "generation_s": 0.616,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "The official language of Romania is Romanian, an Eastern Romance language related to Italian, French, Spanish, Portuguese and Catalan. Romanian is spoken as a first language by 91% of the population, with Hungarian and Romani being the most important minority languages, spoken by 6.7% and 1.1% of the population, respectively.  Until the 1990s, there was also a substantial number of German-speaking Transylvanian Saxons, even though many have since emigrated to Germany, leaving only 45,000 native German speakers in Romania. In localities where a given ethnic minority makes up more than 20% of the population, that minority's language can be used in the public administration and justice system, while native-language education and signage is also provided. English and French are the main foreign languages taught in schools. English is spoken by 5 million Romanians, French is spoken by 4-5 million, and German, Italian and Spanish are each spoken by 1-2 million people.   Outsourcing IT \u00c3\u00aen Rom\u00c3\u00a2nia, Owners Association of the Software and Service Industry, retrieved November 13 2005  Historically, French was the predominant foreign language spoken in Romania, even though English has since superseded it. Consequently, Romanian English-speakers tend to be younger than Romanian French-speakers. Romania is, however, a full member of La Francophonie, and hosted the Francophonie Summit in 2006.   Chronology of the International Organization La Francophonie  German has been taught predominantly in Transylvania, due to traditions tracing back to the Austro-Hungarian rule in this province.",
+        "Romania has been a member of the European Union since January 1 2007, and has the ninth largest territory in the EU and with 22 million people      it has the 7th largest population among the EU member states. Its capital and largest city is Bucharest (   ), the sixth largest city in the EU with almost 2.5 million people. In 2007, Sibiu, a large city in Transylvania, was chosen as European Capital of Culture.    Romania joined NATO on March 29, 2004, and is also a member of the Latin Union, of the Francophonie and of OSCE.",
+        "Romania ( ,  ) is a country in Southeastern Europe. It shares a border with Hungary and Serbia to the west, Ukraine and the Republic of Moldova to the northeast, and Bulgaria to the south. Romania has a stretch of sea coast along the Black Sea. It is located roughly in the lower basin of the Danube and almost all of the Danube Delta is located within its territory.",
+        "The official logo of Romania, used to promote the tourist attractions in the country"
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 46,
+      "recall_at_k": 0.021739130434782608
+    },
+    {
+      "question": "What happened in a log cabin in summerhill , new york?",
+      "ground_truth": "Fillmore was born",
+      "prediction": "I don\u2019t know.",
+      "latency_s": 0.579,
+      "retrieval_s": 0.03,
+      "generation_s": 0.514,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.0,
+      "contexts": [
+        "At the Pan-American Exposition in Buffalo, New York President McKinley was shot by Leon Czolgosz (Zol-gash), on September 6, 1901.  Roosevelt had been giving a speech in Vermont when he heard of the shooting. He rushed to Buffalo but after being assured the President would recover, he went on a planned family camping and hiking trip to Mount Marcy. In the mountains a runner notified him McKinley was on his death bed. Roosevelt pondered with his wife, Edith, how best to respond, not wanting to show up in Buffalo and wait on McKinley's death. Roosevelt was rushed by a series of stagecoaches to North Creek train station. At the station, Roosevelt was handed a telegram that said President McKinley died at 2:30 AM that morning. Roosevelt continued by train from North Creek to Buffalo. He arrived in Buffalo later that day, accepting an invitation to stay at the home of Ansley Wilcox, a prominent lawyer and friend since the early 1880s when they had both worked closely with New York State Governor Grover Cleveland on civil service reform. Wilcox recalled, \"the family and most of the household were in the country, but he Roosevelt was offered a quiet place to sleep and eat, and accepted it.\" Roosevelt was a successful president. He would achieve a lot of goals in life. Some of these goals were that he won the Spanish-American War, and the Nobel Peace Prize, and he also was the youngest president in United States history. \"It is a dreadful thing to come into the Presidency this way.\" Retrieved February 2 2007.",
+        "Fillmore was born in a log cabin in Summerhill, New York, to Nathaniel and Phoebe Millard Fillmore, as the second of nine children and the eldest son.    Though a Unitarian in later life,",
+        "Symbolic log cabin at Abraham Lincoln Birthplace National Historic Site.",
+        "*In 2007, a duck in Tallahassee, Florida survived a gunshot wound and two days stored in a refrigerator whilst presumed dead.  The duck was operated on and was again presumed dead after a bad reaction to anesthesia. After further procedure the duck lived."
+      ],
+      "hits": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 0.5,
+      "n_relevant_in_corpus": 1,
+      "recall_at_k": 1.0
+    },
+    {
+      "question": "What is an economic use of a duck?",
+      "ground_truth": "Meat",
+      "prediction": "Farming for meat, eggs, feathers (especially down), or breeding for aviculture/zoos.",
+      "latency_s": 0.87,
+      "retrieval_s": 0.024,
+      "generation_s": 0.805,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.16666666666666669,
+      "contexts": [
+        "Ducks have many economic uses, being farmed for their meat, eggs, feathers, (particularly their down). They are also kept and bred by aviculturists and often displayed in zoos. All domestic ducks are descended from the wild Mallard Anas platyrhynchos, except the Muscovy Duck",
+        "In many areas, wild ducks of various species (including ducks farmed and released into the wild) are hunted for food or sport, by shooting, or formerly by decoys. From this came the expression \"a sitting duck\", which means \"an easy target\".",
+        "Most ducks have a wide flat beak adapted for dredging. They exploit a variety of food sources such as grasses, aquatic plants, fish, insects, small amphibians  Photo of a duck eating a frog , worms, and small molluscs.",
+        "Duck is the common name for a number of species in the Anatidae family of birds. The ducks are divided between several subfamilies listed in full in the Anatidae article. Ducks are mostly aquatic birds, mostly smaller than their relatives the swans and geese, and may be found in both fresh water and sea water."
+      ],
+      "hits": [
+        true,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 9,
+      "recall_at_k": 0.1111111111111111
+    },
+    {
+      "question": "What is the average life expectancy of a kangaroo?",
+      "ground_truth": "4.6 years",
+      "prediction": "4\u20136 years.",
+      "latency_s": 0.489,
+      "retrieval_s": 0.03,
+      "generation_s": 0.418,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.4,
+      "contexts": [
+        "The average life expectancy of a kangaroo is about 4 6 years.",
+        "Kangaroos have developed a number of adaptations to a dry, infertile continent and highly variable climate. As with all marsupials, the young are born at a very early stage of development   after a gestation of 31 36 days. At this stage, only the forelimbs are somewhat developed, to allow the newborn to climb to the pouch and attach to a teat. In comparison, a human embryo at a similar stage of development would be about seven weeks old, and premature babies born at less than 23 weeks are usually not mature enough to survive. The joey will usually stay in the pouch for about nine months (180 320 days for the Western Grey) before starting to leave the pouch for small periods of time. It is usually fed by its mother until reaching 18 months.",
+        "* The Red Kangaroo (Macropus rufus) is the largest surviving marsupial anywhere in the world. Fewer in numbers, the Red Kangaroo occupies the arid and semi-arid centre of the continent. A large male can be 2 metres (6 ft 7 in) tall and weigh 90 kg (200 lb).",
+        "A kangaroo is a marsupial from the family Macropodidae (macropods, meaning 'large foot'). In common use the term is used to describe the largest species from this family, the Red Kangaroo, the Antilopine Kangaroo, and the Eastern and Western Grey Kangaroo of the Macropus genus. The family also includes many smaller species which include the wallabies, tree-kangaroos, wallaroos, pademelons and the Quokka, some 63 living species in all.  Kangaroos are endemic to the continent of Australia, while the smaller macropods are found in Australia and New Guinea."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "What order do penguins belong to?",
+      "ground_truth": "Sphenisciformes",
+      "prediction": "Sphenisciformes.",
+      "latency_s": 0.517,
+      "retrieval_s": 0.024,
+      "generation_s": 0.452,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "What seems clear is that penguins belong to a clade of Neoaves (living birds except paleognaths and fowl) which comprises what is sometimes called \"higher waterbirds\" to distinguish them from the more ancient waterfowl. This group contains such birds as storks, rails, and the seabirds, with the possible exception of the Charadriiformes (Fain & Houde 2004).",
+        "Penguins (order Sphenisciformes, family Spheniscidae) are a group of aquatic, flightless birds living almost exclusively in the Southern Hemisphere.",
+        "Inside this group, penguin relationships are far less clear. Depending on the analysis and dataset, a close relationship to Ciconiiformes (e.g. Slack et al. 2006) or to Procellariiformes (Baker et al. 2006) has been suggested. Some (e.g. Mayr 2005) think the penguin-like plotopterids (usually considered relatives of anhingas and cormorants) may actually be a sister group of the penguins, and that penguins may have ultimately shared a common ancestor with the Pelecaniformes and consequently would have to be included in that order, or that the plotopterids were not as close to other pelecaniforms as generally assumed, which would necessitate splitting the traditional Pelecaniformes in three.",
+        "Modern penguins consititute two undisputed clades and another two more basal genera with more ambiguous relationships (Bertelli & Giannini 2005). The origin of the Spheniscinae lies probably in the latest Paleogene, and geographically it must have been much the same as the general area in which the order evolved: the oceans between the Australia-New Zealand region and the Antarctic (Baker et al. 2006). Presumedly diverging from other penguins around 40 mya (Baker et al. 2006), it seems that the Spheniscinae were for quite some time limited to their ancestral area, as the well-researched deposits of the Antarctic Peninsula and Patagonia have not yielded Paleogene fossils of the subfamily. Also, the earliest spheniscine lineages are those with the most southern distribution."
+      ],
+      "hits": [
+        false,
+        true,
+        false,
+        false
+      ],
+      "precision_at_k": 0.25,
+      "reciprocal_rank": 0.5,
+      "n_relevant_in_corpus": 4,
+      "recall_at_k": 0.25
+    },
+    {
+      "question": "When did Ghana achieve independence from the United Kingdom?",
+      "ground_truth": "1957",
+      "prediction": "1957",
+      "latency_s": 0.608,
+      "retrieval_s": 0.026,
+      "generation_s": 0.54,
+      "is_yes_no": false,
+      "exact_match": true,
+      "f1": 1.0,
+      "contexts": [
+        "Upon achieving independence from the United Kingdom in 1957, Peter N. Stearns and William Leonard Langer. The Encyclopedia of World History: Ancient, Medieval, and Modern, Chronologically Arranged, 2001. Page 1050.  the name Ghana was chosen for the new nation to reflect the ancient Empire of Ghana that once extended throughout much of western Africa.",
+        "Formed from the merger of the British colony Gold Coast, The Empire of Ashanti and the British Togoland trust territory by a UN sponsored plebiscite, Ghana became the first democratic sub-Sahara country in colonial Africa to gain its independence in 1957. Kwame Nkrumah, founder and first president of the modern Ghanaian state, was not only an African anti-colonial leader but also one with a dream of a united Africa which would not drift into neo-colonialism. He was the first African head of state to espouse Pan-Africanism, an idea he came into contact with during his studies at Lincoln University in Pennsylvania (United States), at the time when Marcus Garvey was becoming famous for his \"Back to Africa Movement.\" He merged the dreams of both Marcus Garvey and the celebrated African-American scholar W.E.B. Du Bois into the formation of the modern day Ghana. Ghana's principles of freedom and justice, equity and free education for all, irrespective of ethnic background, religion or creed borrow from Osagyefo Dr Kwame Nkrumah's implementation of Pan-Africanism.",
+        "The first contact between the Ghanaian peoples, the Fantes on the coastal area and Europeans occurred in 1482. The Portuguese  first landed at Elmina, a coastal city inhabited by the Fanti nation-state in 1482. During the next few centuries parts of the area were controlled by British, Portuguese, and Scandinavian powers, with the British ultimately prevailing. These nation-states maintained varying alliances with the colonial powers and each other, which resulted in the 1806 Ashanti-Fante War, as well as an ongoing struggle by the Empire of Ashanti against the British. Moves toward regional de-colonization began in 1946, and the area's first constitution was promulgated in 1951.",
+        "Ghana was inhabited in pre-colonial times by a number of ancient kingdoms, including the Ga Adangbes on the eastern coast, inland Empire of Ashanti and various Fante states along the coast and inland. Trade with European states flourished after contact with the Portuguese in the 15th century, and the British established a crown colony, Gold Coast, in 1874. MacLean, Iain. Rational Choice and British Politics: An Analysis of Rhetoric and Manipulation from Peel to Blair, 2001. Page 76."
+      ],
+      "hits": [
+        true,
+        true,
+        false,
+        false
+      ],
+      "precision_at_k": 0.5,
+      "reciprocal_rank": 1.0,
+      "n_relevant_in_corpus": 11,
+      "recall_at_k": 0.18181818181818182
+    },
+    {
+      "question": "Did he not determine the dependence of the boiling of water with atmospheric pressure -LRB- in excellent agreement with modern data -RRB- ?",
+      "ground_truth": "Yes he did",
+      "prediction": "Yes.",
+      "latency_s": 0.669,
+      "retrieval_s": 0.061,
+      "generation_s": 0.566,
+      "is_yes_no": false,
+      "exact_match": false,
+      "f1": 0.5,
+      "contexts": [
+        "Anders Celsius was the first to perform and publish careful experiments aiming at the definition of an international temperature scale on scientific grounds. In his Swedish paper \"Observations of two persistent degrees on a thermometer\" he reports on experiments to check that the freezing point is independent of latitude (and of atmospheric pressure). He determined the dependence of the boiling of water with atmospheric pressure (in excellent agreement with modern data). He further gave a rule for the determination of the boiling point if the barometric pressure deviates from a certain standard pressure  History of the Celsius temperature scale .",
+        "Because of the danger of exploding boilers and the ongoing issues with leaks, Watt was opposed from the first to the use of high pressure steam--all of his engines used steam at very low pressure.",
+        "Four years after opening his shop, Watt began to experiment with steam after his friend, Professor John Robison, called his attention to it.  At this point Watt had still never seen an operating steam engine, but he tried constructing a model.  It failed to work satisfactorily, but he continued his experiments and began to read everything about it he could.  He independently discovered the importance of latent heat in understanding the engine, which, unknown to him, Black had famously discovered some years before.  He learned that the University owned a model Newcomen engine, but it was in London for repairs.  Watt got the university to have it returned, and he made the repairs in 1763.  It too just barely worked, and after much experimentation he showed that about 80% of the heat of the steam was consumed in heating the cylinder, because the steam in it was condensed by an injected stream of cold water. His critical insight, to cause the steam to condense in a separate chamber apart from the piston, and to maintain the temperature of the cylinder at the same temperature as the injected steam, came finally in 1765 and he soon had a working model.",
+        "Celsius founded the Uppsala Astronomical Observatory in 1741, and in 1742 he proposed the Celsius temperature scale in a paper to the Royal Swedish Academy of Sciences. His thermometer had 100 for the freezing point of water and 0 for the boiling point. The scale was reversed by Carolus Linnaeus in 1745, to how it is today  Linnaeus' thermometer ."
+      ],
+      "hits": [
+        false,
+        false,
+        false,
+        false
+      ],
+      "precision_at_k": 0.0,
+      "reciprocal_rank": 0.0,
+      "n_relevant_in_corpus": 0,
+      "recall_at_k": null
+    },
+    {
+      "question": "Is it true that he sent in federal troops to chicago?",
+      "ground_truth": "yes",
+      "prediction": "No.",
+      "latency_s": 0.409,
+      "retrieval_s": 0.028,
+      "generation_s": 0.34,
+      "is_yes_no": true,
+      "correct": false,
+      "parsed": "no"
+    }
+  ]
+}
