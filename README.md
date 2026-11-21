@@ -73,13 +73,14 @@ ollama pull ministral-3:3b        # or the model set in config.py
 # 1. Inspect the dataset
 python src/explore.py
 
-# 2. Build the vector index (about a minute for 3,081 passages)
+# 2. Build the vector index (about a minute; passages under 20 characters are skipped)
 python src/ingest.py
 
 # 3. Ask a few test questions
 python src/rag_chain.py
 
 # 4. Evaluate on a sample of questions
+python eval/build_relevance.py                      # once, needed for Recall@K
 python eval/run_eval.py --name rag_baseline --n 50
 
 # 5. Analyze the results (notebook, to be added)
@@ -89,12 +90,13 @@ python eval/run_eval.py --name rag_baseline --n 50
 
 Each experiment runs a fixed random sample of questions (same seed, so experiments are comparable) and saves full per-question results as JSON in `eval/results/`.
 
-Current metrics, in two groups:
+Current metrics, in three groups:
 
-- **Yes/no questions:** accuracy on the first word of the answer.
-- **Open questions:** exact match, token-level F1, whether the gold answer appears in the generated answer, and whether it appears in the retrieved passages.
+- **Retrieval** (open questions): Precision@K, MRR and Recall@K, computed against proxy relevance labels (a passage is relevant if it contains the ground truth).
+- **Generation:** yes/no accuracy on yes/no questions, exact match and token-level F1 on open questions.
+- **Operational:** latency (median and p95, total and per stage).
 
-Comparing the last two shows where errors come from: bad retrieval or bad use of good passages. Details and limits are in [`eval/README.md`](eval/README.md).
+Comparing retrieval and generation metrics shows where errors come from: bad retrieval or bad use of good passages. Definitions, interpretation and limits are in [`eval/README.md`](eval/README.md).
 
 Planned next steps:
 
@@ -107,8 +109,8 @@ Planned next steps:
 - [x] Dataset exploration
 - [x] Indexing with Chroma and Ollama embeddings
 - [x] Simple RAG pipeline (LangChain building blocks)
-- [x] Evaluation script with string-based metrics
-- [x] Baseline run (results not yet written up here)
+- [x] Evaluation script: retrieval (proxy labels), generation (string-based) and operational metrics
+- [ ] Baseline run with the current metrics (to be re-run: the previous results used older metrics)
 - [ ] Hyperparameter study
 - [ ] LLM-as-judge and manual validation of the judge
 - [ ] Analysis notebook
@@ -118,9 +120,9 @@ Planned next steps:
 
 To be filled in once each experiment has been run and reviewed.
 
-| System | Yes/no acc. | Open F1 | Answer in retrieved | Mean latency |
-|---|---|---|---|---|
-| Baseline | TBD | TBD | TBD | TBD |
+| System | Yes/no acc. | Open F1 | Precision@K | MRR | Recall@K | Latency (median / p95) |
+|---|---|---|---|---|---|---|
+| Baseline | TBD | TBD | TBD | TBD | TBD | TBD |
 
 ## Limitations
 

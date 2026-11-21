@@ -12,20 +12,38 @@ from datasets import load_dataset
 from tqdm import tqdm
 
 import config
-from eval.metrics import contains, exact_match, normalize, parse_yes_no, token_f1
+from eval.metrics import (
+    exact_match,
+    latency_summary,
+    normalize,
+    parse_yes_no,
+    precision_at_k,
+    recall_at_k,
+    reciprocal_rank,
+    retrieval_hits,
+    token_f1,
+    yes_no_correct,
+)
 from src.rag_chain import answer
 
 # Folder where each experiment is saved as a JSON file
 RESULTS_DIR = config.ROOT / "eval" / "results"
+# Proxy relevance labels, produced by eval/build_relevance.py
+RELEVANCE_PATH = config.ROOT / "eval" / "relevance.json"
 
 
-def mean(values: list[float]) -> float:
-    """Average of a list; NaN if empty (e.g. no open question in the sample).
+def mean(values: list[float]) -> float | None:
+    """Average of a list; None if empty. Booleans count as 1 / 0."""
+    return sum(values) / len(values) if values else None
 
-    Booleans work too: True counts as 1 and False as 0, so the mean
-    of a list of booleans is a proportion (accuracy).
+
+def stat(values: list) -> dict:
+    """Mean of the non-missing values, and how many values it is based on.
+
+    n matters: Recall@K skips the questions with no relevant passage in the corpus.
     """
-    return sum(values) / len(values) if values else float("nan")
+    values = [float(v) for v in values if v is not None]
+    return {"mean": mean(values), "n": len(values)}
 
 
 def main() -> None:
@@ -43,52 +61,94 @@ def main() -> None:
     random.Random(args.seed).shuffle(questions)
     questions = questions[: args.n]
 
+    # --- Proxy relevance labels (needed for Recall@K only) ---
+    if RELEVANCE_PATH.exists():
+        relevance = json.loads(RELEVANCE_PATH.read_text(encoding="utf-8"))
+    else:
+        relevance = {}
+        print(f"WARNING: {RELEVANCE_PATH} not found, Recall@K will be skipped. "
+              "Run eval/build_relevance.py first.")
+
+    # --- Warm-up call (not scored): the first call pays the model loading cost ---
+    answer(questions[0]["question"], k=args.k)
+
     # --- Run the RAG system on each question ---
     rows = []
     for item in tqdm(questions):
-        gold = item["answer"]
+        ground_truth = item["answer"]
 
         # Measure end-to-end time (retrieval + generation)
         start = time.perf_counter()
         result = answer(item["question"], k=args.k)
         latency = time.perf_counter() - start
 
-        # All retrieved passages as one text, to check if they contain the answer
-        retrieved_text = " ".join(doc.page_content for doc in result["documents"])
-
         row = {
             "question": item["question"],
-            "gold": gold,
+            "ground_truth": ground_truth,
             "prediction": result["answer"],
-            "latency_s": round(latency, 2),
+            # Operational metrics
+            "latency_s": round(latency, 3),
+            # Optional split: only filled if answer() returns these keys
+            "retrieval_s": result.get("retrieval_s"),
+            "generation_s": result.get("generation_s"),
             # Yes/no questions are scored differently from open questions
-            "is_yes_no": normalize(gold) in {"yes", "no"},
+            "is_yes_no": normalize(ground_truth) in {"yes", "no"},
         }
+
         if row["is_yes_no"]:
-            # Correct if the model's first word matches the expected yes/no
-            row["correct"] = parse_yes_no(result["answer"]) == normalize(gold)
+            row["correct"] = yes_no_correct(result["answer"], ground_truth)
+            # None = parsing failure, tracked apart from wrong answers
+            row["parsed"] = parse_yes_no(result["answer"])
         else:
-            row["exact_match"] = exact_match(result["answer"], gold)
-            row["f1"] = token_f1(result["answer"], gold)
-            # Did the model mention the right answer, even if verbose?
-            row["answer_in_generation"] = contains(result["answer"], gold)
-            # Proxy for retrieval quality: gold answer appears in retrieved passages
-            row["answer_in_retrieved"] = contains(retrieved_text, gold)
+            # Generation metrics
+            row["exact_match"] = exact_match(result["answer"], ground_truth)
+            row["f1"] = token_f1(result["answer"], ground_truth)
+
+            # Retrieval metrics: one flag per retrieved passage, in rank order
+            passages = [doc.page_content for doc in result["documents"]]
+            hits = retrieval_hits(passages, ground_truth)
+            # Keep the retrieved texts: the LLM judge (phase 2) needs them
+            # and can then run offline on saved results
+            row["contexts"] = passages
+            row["hits"] = hits
+            row["precision_at_k"] = precision_at_k(hits)
+            row["reciprocal_rank"] = reciprocal_rank(hits)
+            n_relevant = relevance.get(item["question"])
+            row["n_relevant_in_corpus"] = n_relevant
+            row["recall_at_k"] = recall_at_k(hits, n_relevant)
         rows.append(row)
+
+    # Recall above 1 means the scanned units differ from the indexed ones
+    if any((r.get("recall_at_k") or 0) > 1 for r in rows):
+        print("WARNING: Recall@K > 1 for some questions. The corpus scan and the "
+              "index do not use the same passages (chunking?).")
 
     # --- Aggregate the results ---
     yes_no = [r for r in rows if r["is_yes_no"]]
     open_q = [r for r in rows if not r["is_yes_no"]]
+
+    # Share of the most frequent class: the score of a model that always says the same thing
+    n_yes = sum(normalize(r["ground_truth"]) == "yes" for r in yes_no)
+    majority = max(n_yes, len(yes_no) - n_yes) / len(yes_no) if yes_no else None
+
     summary = {
         "n_total": len(rows),
         "n_yes_no": len(yes_no),
         "n_open": len(open_q),
-        "yes_no_accuracy": mean([r["correct"] for r in yes_no]),
-        "open_exact_match": mean([r["exact_match"] for r in open_q]),
-        "open_f1": mean([r["f1"] for r in open_q]),
-        "open_answer_in_generation": mean([r["answer_in_generation"] for r in open_q]),
-        "open_answer_in_retrieved": mean([r["answer_in_retrieved"] for r in open_q]),
-        "mean_latency_s": mean([r["latency_s"] for r in rows]),
+        # Retrieval (proxy labels, open questions)
+        "open_precision_at_k": stat([r["precision_at_k"] for r in open_q]),
+        "open_mrr": stat([r["reciprocal_rank"] for r in open_q]),
+        "open_recall_at_k": stat([r["recall_at_k"] for r in open_q]),
+        # Generation
+        "yes_no_accuracy": stat([r["correct"] for r in yes_no]),
+        "yes_no_unparsed_rate": stat([r["parsed"] is None for r in yes_no]),
+        "yes_no_majority_baseline": majority,
+        "open_exact_match": stat([r["exact_match"] for r in open_q]),
+        "open_f1": stat([r["f1"] for r in open_q]),
+        # Operational
+        "latency_s": latency_summary([r["latency_s"] for r in rows]),
+        "retrieval_s": latency_summary([r["retrieval_s"] for r in rows]),
+        "generation_s": latency_summary([r["generation_s"] for r in rows]),
     }
 
     # --- Save everything: settings, summary and per-question details ---
@@ -107,7 +167,7 @@ def main() -> None:
 
     RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     path = RESULTS_DIR / f"{args.name}.json"
-    path.write_text(json.dumps(output, indent=2))
+    path.write_text(json.dumps(output, indent=2), encoding="utf-8")
     print(json.dumps(summary, indent=2))
     print("Saved to", path)
 
